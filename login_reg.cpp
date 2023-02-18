@@ -6,12 +6,20 @@
 
 #include <iostream>
 #include <string>
+#include <cstdio>
+#include <cstdlib>
 
 using namespace std;
 
 int main(){
+    // define variables
     string user_name;
     string password;
+
+    // create login credentials file
+    FILE* fp = fopen("~/Documents/projects/login_credentials.txt","w+");
+
+
     cout << "Hello! Please login with your credentials";
     cout << "Username: ";
     cin >> user_name;
@@ -20,5 +28,5 @@ int main(){
     // need to add an if statement to check if the user is registered
     // need to have a second part to do the registration
     // need to add a part to create the file to add the login credentials to
-    
+
 }
