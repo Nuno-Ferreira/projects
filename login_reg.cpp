@@ -26,7 +26,7 @@ int main(){
     else {
         file = fopen("~/Documents/projects/login_credentials.txt","w+");
     }
-
+    
 
     // terminal interface for login
     cout << "Hello! Please login with your credentials";
@@ -36,8 +36,30 @@ int main(){
     cin >> password;
 
 
-    // need to add an if statement to check if the user is registered
+    // read file to check if those credentials are registered
+    // maybe add an if statement to check if file is open before writing to it
+    if (user_name and password == file) {
+
+        // register user credentials
+        cout << "Hello! Please login with your credentials";
+        cout << "Username: ";
+        cin >> user_name;
+        cout << "Password: ";
+        cin >> password;
+
+        // write the credentials to file
+        file >> user_name;
+        file >> password;
+
+    }
+    else {
+        cout << "Login successfull!";
+    }
+
     // need to have a second part to do the registration
-    // need to add a part to create the file to add the login credentials to
+
+    //close the file
+    fclose(file);
+
     return 0;
 }
