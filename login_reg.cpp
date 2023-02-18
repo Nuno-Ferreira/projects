@@ -6,10 +6,13 @@
 
 #include <iostream>
 #include <string>
-#include <cstdio>
-#include <cstdlib>
+#include <fstream>
 
 using namespace std;
+
+bool checkCredentials(char* filename, char* word){
+
+}
 
 int main(){
     // define variables
@@ -17,16 +20,16 @@ int main(){
     string password;
 
     // create login credentials file
-    FILE* file = fopen("~/Documents/projects/login_credentials.txt","r+");
+    fstream file("login_credentials.txt");
 
     // check if file exists or not
-    if (file!=NULL) {
-        file = fopen("~/Documents/projects/login_credentials.txt","r+");
+    if (file) {
+        file.open("login_credentials.txt");
     }
     else {
-        file = fopen("~/Documents/projects/login_credentials.txt","w+");
+        fstream file("login_credentials.txt");
     }
-    
+
 
     // terminal interface for login
     cout << "Hello! Please login with your credentials";
@@ -35,10 +38,12 @@ int main(){
     cout << "Password: ";
     cin >> password;
 
+    // add a function to check if the credentials are in file 
+
 
     // read file to check if those credentials are registered
     // maybe add an if statement to check if file is open before writing to it
-    if (user_name and password == file) {
+    if (checkCredentials(file, user_name) = true) {
 
         // register user credentials
         cout << "Hello! Please login with your credentials";
@@ -48,8 +53,8 @@ int main(){
         cin >> password;
 
         // write the credentials to file
-        file >> user_name;
-        file >> password;
+        file << user_name;
+        file << password;
 
     }
     else {
@@ -59,7 +64,7 @@ int main(){
     // need to have a second part to do the registration
 
     //close the file
-    fclose(file);
+    file.close();
 
     return 0;
 }
