@@ -8,7 +8,12 @@
 #include <string>
 #include <fstream>
 
-using namespace std;
+//using namespace std;
+
+// need to have a second part to do the registration
+// maybe add a function called registration 
+
+// set the login as a function - then set the main to just call the functions
 
 bool checkCredentials(char* filename, char* word){
 
@@ -16,27 +21,27 @@ bool checkCredentials(char* filename, char* word){
 
 int main(){
     // define variables
-    string user_name;
-    string password;
+    std::string user_name;
+    std::string password;
 
     // create login credentials file
-    fstream file("login_credentials.txt");
+    std::fstream file("login_credentials.txt");
 
     // check if file exists or not
     if (file) {
         file.open("login_credentials.txt");
     }
     else {
-        fstream file("login_credentials.txt");
+        std::fstream file("login_credentials.txt");
     }
 
 
     // terminal interface for login
-    cout << "Hello! Please login with your credentials";
-    cout << "Username: ";
-    cin >> user_name;
-    cout << "Password: ";
-    cin >> password;
+    std::cout << "Hello! Please login with your credentials";
+    std::cout << "Username: ";
+    std::cin >> user_name;
+    std::cout << "Password: ";
+    std::cin >> password;
 
     // add a function to check if the credentials are in file 
 
@@ -46,11 +51,11 @@ int main(){
     if (checkCredentials(file, user_name) = true) {
 
         // register user credentials
-        cout << "Hello! Please login with your credentials";
-        cout << "Username: ";
-        cin >> user_name;
-        cout << "Password: ";
-        cin >> password;
+        std::cout << "Hello! Please login with your credentials";
+        std::cout << "Username: ";
+        std::cin >> user_name;
+        std::cout << "Password: ";
+        std::cin >> password;
 
         // write the credentials to file
         file << user_name;
@@ -58,10 +63,8 @@ int main(){
 
     }
     else {
-        cout << "Login successfull!";
+        std::cout << "Login successfull!";
     }
-
-    // need to have a second part to do the registration
 
     //close the file
     file.close();
