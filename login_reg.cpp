@@ -17,6 +17,25 @@
 
 bool checkCredentials(char* filename, char* word){
 
+    int line_counter;
+    // maybe change the name of this string and try to understand it a bit better
+    std::string line;
+    std::ifstream file(filename);
+    file.open(filename);
+
+    // this while loop is used to check if the searching for the word has reached the end of of the file with .eof()
+    while (!file.eof()){
+        getline(file, line);
+        if ((line_counter = line.find(word, 0)) != std::string::npos){
+            file.close();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    file.close();
+
 }
 
 int main(){
@@ -48,7 +67,7 @@ int main(){
 
     // read file to check if those credentials are registered
     // maybe add an if statement to check if file is open before writing to it
-    if (checkCredentials(file, user_name) = true) {
+    if (checkCredentials("login_credentials.txt", "user_name") = true) {
 
         // register user credentials
         std::cout << "Hello! Please login with your credentials";
