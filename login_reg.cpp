@@ -10,11 +10,6 @@
 
 //using namespace std;
 
-// need to have a second part to do the registration
-// maybe add a function called registration 
-
-// set the login as a function - then set the main to just call the functions
-
 bool checkCredentials(char* filename, char* word){
 
     int line_counter;
@@ -38,11 +33,40 @@ bool checkCredentials(char* filename, char* word){
 
 }
 
-int main(){
+bool login(){
+
     // define variables
     std::string user_name;
     std::string password;
 
+    std::cout << "Hello! Please login with your credentials";
+    std::cout << "Username: ";
+    std::cin >> user_name;
+    std::cout << "Password: ";
+    std::cin >> password;
+}
+
+bool registration(){
+
+    // define variables
+    std::string user_name;
+    std::string password;
+
+    // register user credentials
+    std::cout << "Hello! Please login with your credentials";
+    std::cout << "Username: ";
+    std::cin >> user_name;
+    std::cout << "Password: ";
+    std::cin >> password;
+
+    // write the credentials to file
+    file << user_name;
+    file << password;
+
+
+}
+
+bool check_file_exists(){
     // create login credentials file
     std::fstream file("login_credentials.txt");
 
@@ -54,32 +78,31 @@ int main(){
         std::fstream file("login_credentials.txt");
     }
 
+}
 
-    // terminal interface for login
-    std::cout << "Hello! Please login with your credentials";
-    std::cout << "Username: ";
-    std::cin >> user_name;
-    std::cout << "Password: ";
-    std::cin >> password;
 
-    // add a function to check if the credentials are in file 
+int main(){
 
+    // need to open the file in all the functions that need it
+    
+
+    // open the credentials file if true
+    // create the file if false
+    if (check_file_exists() == true) {
+        // check if this works 
+        file.open("login_credentials.txt");
+    }
+    else {
+        std::fstream file("login_credentials.txt");
+    }
+
+    // call login function
+    login();
 
     // read file to check if those credentials are registered
     // maybe add an if statement to check if file is open before writing to it
     if (checkCredentials("login_credentials.txt", "user_name") == true) {
-
-        // register user credentials
-        std::cout << "Hello! Please login with your credentials";
-        std::cout << "Username: ";
-        std::cin >> user_name;
-        std::cout << "Password: ";
-        std::cin >> password;
-
-        // write the credentials to file
-        file << user_name;
-        file << password;
-
+        registration();
     }
     else {
         std::cout << "Login successfull!";
