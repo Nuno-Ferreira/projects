@@ -67,7 +67,7 @@ int main(){
 
     // read file to check if those credentials are registered
     // maybe add an if statement to check if file is open before writing to it
-    if (checkCredentials("login_credentials.txt", "user_name") = true) {
+    if (checkCredentials("login_credentials.txt", "user_name") == true) {
 
         // register user credentials
         std::cout << "Hello! Please login with your credentials";
