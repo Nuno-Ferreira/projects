@@ -8,7 +8,6 @@
 #include <string>
 #include <fstream>
 
-//using namespace std;
 
 bool checkCredentials(char* filename, char* word){
 
@@ -48,12 +47,17 @@ bool login(){
 
 bool registration(){
 
+    // maybe check if file exists
+
+    // opening the file 
+    std::ofstream file("login_credentials.txt");
+
     // define variables
     std::string user_name;
     std::string password;
 
     // register user credentials
-    std::cout << "Hello! Please login with your credentials";
+    std::cout << "Please register with your credentials";
     std::cout << "Username: ";
     std::cin >> user_name;
     std::cout << "Password: ";
@@ -67,9 +71,7 @@ bool registration(){
 }
 
 bool check_file_exists(){
-    // create login credentials file
-    std::fstream file("login_credentials.txt");
-
+    
     // check if file exists or not
     if (file) {
         file.open("login_credentials.txt");
@@ -84,7 +86,7 @@ bool check_file_exists(){
 int main(){
 
     // need to open the file in all the functions that need it
-    
+
 
     // open the credentials file if true
     // create the file if false
