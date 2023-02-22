@@ -94,6 +94,8 @@ int main(){
     // call login function
     login();
 
+
+    // this might not work, need to check how to carry over the variables from the login function to the check credentials function
     // TODO: still need to add another argument to insert the password
     // read file to check if those credentials are registered
     if (checkCredentials("login_credentials.txt", "user_name") == true) {
