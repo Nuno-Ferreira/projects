@@ -38,6 +38,7 @@ bool login(){
     std::string user_name;
     std::string password;
 
+    // login with terminal interface
     std::cout << "Hello! Please login with your credentials";
     std::cout << "Username: ";
     std::cin >> user_name;
@@ -46,8 +47,6 @@ bool login(){
 }
 
 bool registration(){
-
-    // maybe check if file exists
 
     // opening the file 
     std::ofstream file("login_credentials.txt");
@@ -64,20 +63,24 @@ bool registration(){
     std::cin >> password;
 
     // write the credentials to file
-    file << user_name;
-    file << password;
+    file << user_name << ": ";
+    file << password << "; \n";
 
 
 }
 
-bool check_file_exists(){
+bool check_file_exists(char* myfile){
     
+    // get the credentials
+    std::ofstream file(myfile);
+
+    // TODO: check if this works or if I still need to change it so no redundancies happen
     // check if file exists or not
     if (file) {
-        file.open("login_credentials.txt");
+        file.open(myfile);
     }
     else {
-        std::fstream file("login_credentials.txt");
+        std::fstream file(myfile);
     }
 
 }
@@ -85,24 +88,14 @@ bool check_file_exists(){
 
 int main(){
 
-    // need to open the file in all the functions that need it
-
-
-    // open the credentials file if true
-    // create the file if false
-    if (check_file_exists() == true) {
-        // check if this works 
-        file.open("login_credentials.txt");
-    }
-    else {
-        std::fstream file("login_credentials.txt");
-    }
+    // check if file exists 
+    check_file_exists("login_credentials.txt");
 
     // call login function
     login();
 
+    // TODO: still need to add another argument to insert the password
     // read file to check if those credentials are registered
-    // maybe add an if statement to check if file is open before writing to it
     if (checkCredentials("login_credentials.txt", "user_name") == true) {
         registration();
     }
@@ -110,8 +103,9 @@ int main(){
         std::cout << "Login successfull!";
     }
 
+    // need to figure out how to close the file 
     //close the file
-    file.close();
+    //file.close();
 
     return 0;
 }
