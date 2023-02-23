@@ -39,7 +39,7 @@ bool login(){
     std::string password;
 
     // login with terminal interface
-    std::cout << "Hello! Please login with your credentials";
+    std::cout << "Hello! Please login with your credentials! \n";
     std::cout << "Username: ";
     std::cin >> user_name;
     std::cout << "Password: ";
@@ -56,7 +56,7 @@ bool registration(){
     std::string password;
 
     // register user credentials
-    std::cout << "Please register with your credentials";
+    std::cout << "Please register with your credentials! \n";
     std::cout << "Username: ";
     std::cin >> user_name;
     std::cout << "Password: ";
@@ -93,7 +93,6 @@ int main(){
 
     // call login function
     login();
-
 
     // this might not work, need to check how to carry over the variables from the login function to the check credentials function
     // TODO: still need to add another argument to insert the password
