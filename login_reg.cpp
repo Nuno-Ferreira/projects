@@ -101,7 +101,7 @@ int main(){
         registration();
     }
     else {
-        std::cout << "Login successfull!";
+        std::cout << "Login successfull! \n";
     }
 
     // need to figure out how to close the file 
