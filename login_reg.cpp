@@ -9,7 +9,7 @@
 #include <fstream>
 
 
-bool checkCredentials(char* filename, char* word){
+bool checkCredentials(char* filename, char* username, char* password){
 
     int line_counter;
     // maybe change the name of this string and try to understand it a bit better
@@ -20,7 +20,7 @@ bool checkCredentials(char* filename, char* word){
     // this while loop is used to check if the searching for the word has reached the end of of the file with .eof()
     while (!file.eof()){
         getline(file, line);
-        if ((line_counter = line.find(word, 0)) != std::string::npos){
+        if ((line_counter = line.find(username, 0)) != std::string::npos){
             file.close();
             return true;
         }
@@ -46,7 +46,7 @@ bool login(){
     std::cin >> password;
 }
 
-bool registration(){
+std::string registration(){
 
     // opening the file 
     std::ofstream file("login_credentials.txt");
@@ -66,7 +66,7 @@ bool registration(){
     file << user_name << ": ";
     file << password << "; \n";
 
-
+    return user_name, password
 }
 
 bool check_file_exists(char* myfile){
@@ -89,7 +89,7 @@ bool check_file_exists(char* myfile){
 int main(){
 
     // check if file exists 
-    check_file_exists("login_credentials.txt");
+    check_file_exists("login_credentials.txt") == true;
 
     // call login function
     login();
@@ -97,7 +97,7 @@ int main(){
     // this might not work, need to check how to carry over the variables from the login function to the check credentials function
     // TODO: still need to add another argument to insert the password
     // read file to check if those credentials are registered
-    if (checkCredentials("login_credentials.txt", "user_name") == true) {
+    if (checkCredentials("login_credentials.txt", user_name, password) == true) {
         registration();
     }
     else {
