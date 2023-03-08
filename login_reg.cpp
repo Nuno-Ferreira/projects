@@ -46,7 +46,7 @@ bool login(){
     std::cin >> password;
 }
 
-std::string registration(){
+void registration(){
 
     // opening the file 
     std::ofstream file("login_credentials.txt");
